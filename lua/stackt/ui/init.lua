@@ -1,12 +1,12 @@
-local api = require('stackt.ui.instance')
+local instance = require('stackt.ui.instance')
 local M = {}
 
 M.close = function()
-  api.close()
+  instance.close()
 end
 
 M.open = function()
-  api.open()
+  instance.open()
 end
 
 return M

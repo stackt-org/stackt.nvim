@@ -17,7 +17,7 @@ M.window = Popup({
 })
 
 M.open = function()
-  if M.window:is_open() then
+  if M.window._.mounted then
     return
   end
 
@@ -39,7 +39,7 @@ M.open = function()
 end
 
 M.close = function()
-  if not M.window:is_open() then
+  if not M.window._.mounted then
     return
   end
 
