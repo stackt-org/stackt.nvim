@@ -8,4 +8,12 @@ M.setup = function(config)
   return vim.tbl_deep_extend('force', settings.config, config or {})
 end
 
+M.open = function()
+  require('stackt.ui.init').open()
+end
+
+vim.api.nvim_create_user_command('YourPlugin', function()
+  require('stackt.ui.init').open()
+end, {})
+
 return M
