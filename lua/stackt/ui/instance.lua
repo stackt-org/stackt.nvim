@@ -35,11 +35,15 @@ M.open = function()
     M.close()
   end)
 
+  M.window:map('n', '<Esc>', function()
+    M.close()
+  end, { noremap = true, nowait = true })
+
   vim.api.nvim_buf_set_lines(M.window.bufnr, 0, 1, false, M.window_content)
 end
 
 M.close = function()
-  if not M.window._.mounted then
+  if M.window._.mounted then
     return
   end
 

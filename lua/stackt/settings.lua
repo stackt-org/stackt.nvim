@@ -37,21 +37,9 @@ M.config = {
 }
 
 M.setup_commands = function()
-  vim.api.nvim_create_user_command('StacktOpen', function()
+  vim.api.nvim_create_user_command('Stackt', function()
     ui.open()
   end, { desc = 'Open Stackt UI' })
-
-  vim.api.nvim_create_user_command('StacktClose', function()
-    ui.close()
-  end, { desc = 'Close Stackt UI' })
-
-  vim.api.nvim_create_user_command('StacktToggle', function()
-    if ui.window:is_open() then
-      ui.close()
-    else
-      ui.open()
-    end
-  end, { desc = 'Toggle Stackt UI' })
 
   vim.api.nvim_create_user_command('StacktInstall', function()
     -- Add installation logic here
