@@ -6,9 +6,7 @@ local M = {}
 
 -- Define the content to be displayed inside the popup
 M.window_content = {
-  'stackt.nvim' .. ' v' .. constants.VERSION,
-  'press g? for help',
-  constants.GITHUB_REPO,
+  'stackt.nvim ' .. ' (v' .. constants.VERSION .. ')',
 }
 
 -- Create the popup window styled like Mason
@@ -39,7 +37,11 @@ M.open = function()
     return string.rep(' ', pad) .. line
   end, M.window_content)
 
-  vim.api.nvim_buf_set_lines(M.window.bufnr, 0, -1, false, centered_content)
+  vim.api.nvim_buf_set_lines(M.window.bufnr, 0, -1, false, M.window_content)
+
+  local text = M.window_content[1]
+  local pad = math.max(0, math.floor((width - #text) / 2))
+  vim.api.nvim_buf_add_highlight(M.window.bufnr, -1, 'Title', 0, pad, pad + #text)
 
   -- Auto close events
   M.window:on(event.BufLeave, function()
