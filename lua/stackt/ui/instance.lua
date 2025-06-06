@@ -1,36 +1,24 @@
 local Popup = require('nui.popup')
 local event = require('nui.utils.autocmd').event
+local constants = require('stackt.constants')
 
 local M = {}
 
 -- Define the content to be displayed inside the popup
 M.window_content = {
-  '📦 StacktUI — Language Tool Manager',
-  '',
-  'Available (500)',
-  '────────────────────────────',
-  '• lua-language-server',
-  '• typescript-language-server',
-  '• angular-language-server',
-  '',
-  '🛈 Press <q> to close this window.',
+  'stackt.nvim' .. ' v' .. constants.VERSION,
+  'press g? for help',
+  constants.GITHUB_REPO,
 }
 
 -- Create the popup window styled like Mason
 M.window = Popup({
   enter = true,
   focusable = true,
-  border = {
-    style = 'rounded',
-    text = {
-      top = ' StacktUI ',
-      top_align = 'center',
-    },
-  },
   position = '50%',
   size = {
-    width = '80%',
-    height = '60%',
+    width = '90%',
+    height = '85%',
   },
   win_options = {
     winhighlight = 'Normal:Normal,FloatBorder:FloatBorder',
@@ -45,7 +33,13 @@ M.open = function()
 
   M.window:mount()
 
-  vim.api.nvim_buf_set_lines(M.window.bufnr, 0, -1, false, M.window_content)
+  local width = M.window._.win_config.width
+  local centered_content = vim.tbl_map(function(line)
+    local pad = math.max(0, math.floor((width - #line) / 2))
+    return string.rep(' ', pad) .. line
+  end, M.window_content)
+
+  vim.api.nvim_buf_set_lines(M.window.bufnr, 0, -1, false, centered_content)
 
   -- Auto close events
   M.window:on(event.BufLeave, function()
