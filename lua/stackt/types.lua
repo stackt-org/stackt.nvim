@@ -1,0 +1,33 @@
+---@class StacktUIKeymaps
+---@field toggle_package_expand string
+---@field install_package string
+---@field update_package string
+---@field check_package_version string
+---@field update_all_packages string
+---@field check_outdated_packages string
+---@field uninstall_package string
+---@field cancel_installation string
+---@field apply_language_filter string
+
+---@class StacktUIIcons
+---@field debugger_installed string
+---@field debugger_pending string
+---@field debugger_uninstalled string
+
+---@class StacktUI
+---@field icons StacktUIIcons
+---@field check_outdated_packages_on_open boolean
+---@field border string
+---@field width number
+---@field height number
+---@field keymaps StacktUIKeymaps
+
+---@class StacktConfig
+---@field install_root_dir string
+---@field registries string[]
+---@field automatic_installation boolean
+---@field log_level integer
+---@field max_concurrent_installers integer
+---@field run_post_install_hook boolean
+---@field registry_cache_path string
+---@field ui StacktUI

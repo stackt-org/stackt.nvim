@@ -76,7 +76,7 @@
 
 - [ ] **Base Plugin Config**
 
-  - [ ] Define default settings:
+  - [x] Define default settings:
     ```lua
     {
       registries = { { url = "github:stackt/stackt-registry" } },
