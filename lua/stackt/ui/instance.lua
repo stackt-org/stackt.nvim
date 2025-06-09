@@ -1,5 +1,5 @@
-local Popup = require('nui.popup')
 local event = require('nui.utils.autocmd').event
+local Popup = require('nui.popup')
 local constants = require('stackt.constants')
 
 local M = {}
@@ -19,8 +19,26 @@ M.window = Popup({
     width = '90%',
     height = '85%',
   },
+  border = {
+    style = {
+      '╭',
+      '─',
+      '╮',
+      '│',
+      '│',
+      '╰',
+      '─',
+      '╯',
+    },
+    text = {
+      top = ' stackt.nvim  ',
+      top_align = 'center',
+    },
+    highlight = 'FloatBorder',
+  },
   win_options = {
-    winhighlight = 'Normal:Normal,FloatBorder:FloatBorder',
+    winhighlight = 'Normal:NormalFloat,FloatBorder:FloatBorder,FloatTitle:Title',
+    cursorline = true,
   },
 })
 
@@ -31,12 +49,6 @@ M.open = function()
   end
 
   M.window:mount()
-
-  vim.api.nvim_set_hl(0, 'StacktTitle', { fg = '#ffffff', bold = true })
-
-  vim.api.nvim_buf_set_lines(M.window.bufnr, 0, -1, false, M.window_content)
-
-  vim.api.nvim_buf_add_highlight(M.window.bufnr, -1, 'StacktTitle', 1, 1, -1)
 
   -- Auto close events
   M.window:on(event.BufLeave, function()
