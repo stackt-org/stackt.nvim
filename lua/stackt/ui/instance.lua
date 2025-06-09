@@ -21,23 +21,18 @@ M.window = Popup({
   },
   border = {
     style = {
-      '╭',
-      '─',
-      '╮',
-      '│',
-      '│',
-      '╰',
-      '─',
-      '╯',
+      '+', -- top_left
+      '-', -- top
+      '+', -- top_right
+      '|', -- right
+      '+', -- bottom_right
+      '-', -- bottom
+      '+', -- bottom_left
+      '|', -- left
     },
-    text = {
-      top = ' stackt.nvim  ',
-      top_align = 'center',
-    },
-    highlight = 'FloatBorder',
   },
   win_options = {
-    winhighlight = 'Normal:NormalFloat,FloatBorder:FloatBorder,FloatTitle:Title',
+    winhighlight = 'Normal:NormalFloat,FloatBorder:FloatBorder',
     cursorline = true,
   },
 })
