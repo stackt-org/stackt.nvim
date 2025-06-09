@@ -21,13 +21,13 @@ M.window = Popup({
   },
   border = {
     style = {
-      '+', -- top_left
+      '┌', -- top_left
       '─', -- top
-      '+', -- top_right
+      '┐', -- top_right
       '│', -- right
-      '+', -- bottom_right
+      '┘', -- bottom_right
       '─', -- bottom
-      '+', -- bottom_left
+      '└', -- bottom_left
       '│', -- left
     },
   },
