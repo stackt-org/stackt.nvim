@@ -1,7 +1,6 @@
 local event = require('nui.utils.autocmd').event
 local Popup = require('nui.popup')
 local Menu = require('nui.menu')
-local constants = require('stackt.constants')
 
 local M = {}
 
@@ -76,7 +75,10 @@ M.open = function(opts)
   else
     header = ' Home '
   end
-  vim.api.nvim_buf_set_lines(M.window.bufnr, 0, -1, false, { '', header, '' })
+  -- Center the header in the popup width (80 chars)
+  local pad = math.floor((80 - #header) / 2)
+  local padded_header = string.rep(' ', pad) .. header
+  vim.api.nvim_buf_set_lines(M.window.bufnr, 0, -1, false, { '', padded_header, '' })
 
   -- Create and mount the menu
   local menu = Menu({
