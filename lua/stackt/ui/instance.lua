@@ -29,6 +29,18 @@ M.window = Popup({
     width = '90%',
     height = '85%',
   },
+  border = {
+    style = {
+      '┌', -- top_left
+      '─', -- top
+      '┐', -- top_right
+      '│', -- right
+      '┘', -- bottom_right
+      '─', -- bottom
+      '└', -- bottom_left
+      '│', -- left
+    },
+  },
   win_options = {
     winhighlight = 'Normal:NormalFloat,FloatBorder:FloatBorder',
   },
